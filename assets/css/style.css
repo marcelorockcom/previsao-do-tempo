@@ -1,0 +1,200 @@
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@300;400;500;600;700;800&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Barlow Condensed', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    -webkit-tap-highlight-color: transparent;
+}
+
+html{
+    font-size: 62.5%;
+}
+
+:root{
+    --branco50p: #ffffff80;
+    --azul50p: #5278ae86;
+}
+
+body{
+    font-size: 1.6rem;
+    background: linear-gradient(45deg, #56cbb4 0%,#5567ba 100%);
+    background-repeat: no-repeat;
+    min-width: 100vw;
+    min-height: 100vh;
+    color: #fff;
+}
+
+.container{
+    width: 70vw;
+    margin: 0 auto;
+    display: flex;
+}
+
+.row{
+    display: flex;
+    width: 100%;
+    justify-content: center;
+}
+
+input, button{
+    font-size: 2rem;
+    border-radius: 2rem;
+    padding: .5rem 2rem;
+    border: 0;
+    outline: none;
+    background-color: var(--azul50p);
+    color: #fff;
+    opacity: 0.7;
+    width: 100%;
+}
+
+input{
+    padding: 1rem 1rem 1rem 2rem;
+}
+
+button{
+    cursor: pointer;
+}
+
+a{
+    color: #fff;
+    text-decoration: none;
+}
+
+input::placeholder{
+    color: var(--branco50p);
+}
+
+header{
+    min-height: 10vh;
+    align-items: center;
+}
+
+nav{
+    position: relative;
+    width: 100%;
+}
+
+form{
+    font-size: 2rem;
+    border-radius: 2rem;
+    background-color: var(--azul50p);
+    color: #fff;
+    width: 100%;
+    box-shadow: 0px 3px 20px -7px rgba(0,0,0,0.75);
+    position: absolute;
+}
+
+nav button{
+    width: initial;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    padding: 1rem 2rem 1rem 1rem;
+}
+
+nav .lista-cidades{
+    display: none;
+    margin-left: 0;
+    max-height: 40rem;
+    overflow: auto;
+}
+
+nav .lista-cidades::-webkit-scrollbar {
+    width: 1.5rem;
+}
+  
+nav .lista-cidades::-webkit-scrollbar-track {
+    background: transparent;        /* color of the tracking area */
+}
+
+nav .lista-cidades::-webkit-scrollbar-thumb {
+    background-color: var(--branco50p);
+    border-radius: 1rem;
+    border: none;
+}
+
+nav li{
+    list-style: none;
+    line-height: 3rem;
+    padding: .5rem 2rem;
+}
+
+nav li:last-child{
+    border-bottom-left-radius: 2rem;
+    border-bottom-right-radius: 2rem;
+}
+
+nav li:hover{
+    background-color: rgba(0, 0, 0, 0.062);
+}
+
+nav input:focus ~ .lista-cidades.ativo{
+    display: block;
+    border-top: 1px solid var(--branco50p);
+}
+
+nav input:active ~ .lista-cidades.ativo{
+    display: block;
+    border-top: 1px solid var(--branco50p);
+}
+
+main{
+    display: flex;
+    align-items: center;
+    min-height: 80vh;
+}
+
+main .info{
+    text-align: center;
+    display: none;
+}
+
+.info h1{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 400;
+}
+
+.info h1 i{
+    font-size: 2.2rem;
+    margin-right: 1rem;
+}
+
+.info .icon{
+    display: flex;
+    align-items: center;
+    height: 10rem;
+    overflow: hidden;
+    margin-top: 3rem;
+}
+
+.info img{
+    width: 20rem;
+}
+
+.info .temp{
+    position: relative;
+}
+
+.info .temperatura{
+    font-size: 15rem;
+}
+
+.info .grau{
+    position: absolute;
+    top: 3rem;
+    font-size: 5rem;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.info .descricao{
+    font-size: 2rem;
+}
+
+.ativo{
+    display: block !important;
+}

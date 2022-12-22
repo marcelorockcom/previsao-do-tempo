@@ -45,7 +45,7 @@
         }
 
         async buscaCidades(cidade){
-            const query = `http://api.openweathermap.org/geo/1.0/direct?q=${cidade},BR&limit=5&appid=${this.token}&lang=pt_br`
+            const query = `https://api.openweathermap.org/geo/1.0/direct?q=${cidade},BR&limit=5&appid=${this.token}&lang=pt_br`
             const resposta = await fetch(query)
             if(resposta.status === 200){
                 const json = await resposta.json()
@@ -84,7 +84,7 @@
             this.infoDiv.querySelector('.descricao').innerHTML = info.weather[0].description
             this.infoDiv.querySelector('.cidade span').innerHTML = info.name
             this.infoDiv.querySelector('.temperatura').innerHTML = Math.round(info.main.temp)
-            this.infoDiv.querySelector('img').src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
+            this.infoDiv.querySelector('img').src = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
             this.infoDiv.classList.add('ativo')
         }
 

@@ -84,7 +84,7 @@
             this.infoDiv.querySelector('.descricao').innerHTML = info.weather[0].description
             this.infoDiv.querySelector('.cidade span').innerHTML = info.name
             this.infoDiv.querySelector('.temperatura').innerHTML = Math.round(info.main.temp)
-            this.infoDiv.querySelector('img').src = `http://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
+            this.infoDiv.querySelector('img').src = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
             this.infoDiv.classList.add('ativo')
         }
 

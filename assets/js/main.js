@@ -45,7 +45,7 @@
         }
 
         async buscaCidades(cidade){
-            const query = `http://api.openweathermap.org/geo/1.0/direct?q=${cidade},BR&limit=5&appid=${this.token}&lang=pt_br`
+            const query = `https://api.openweathermap.org/geo/1.0/direct?q=${cidade},BR&limit=5&appid=${this.token}&lang=pt_br`
             const resposta = await fetch(query)
             if(resposta.status === 200){
                 const json = await resposta.json()

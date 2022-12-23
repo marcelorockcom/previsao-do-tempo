@@ -5,6 +5,8 @@
             this.input = document.querySelector('input[type="text"]')
             this.ulCidades = document.querySelector('.lista-cidades')
             this.infoDiv = document.querySelector('.info')
+            this.loader = document.querySelector('.loader')
+            this.icon = document.querySelector('.icon')
             this.cidadeDb
             this.eventos()
         }
@@ -15,18 +17,29 @@
                 const cidade = this.input.value
                 if(cidade) this.buscaCidades(String(cidade))
             })
-            this.input.addEventListener('keyup', e=>{
-                const cidade = this.input.value
+            this.input.addEventListener('keydown', e=>{
+                const letraAtual = e.key.length === 1 ? e.key : ''
+                const cidade = this.input.value + letraAtual
                 if(cidade && cidade.length >= 3) this.buscaCidades(String(cidade))
                 if(cidade.length <= 0) this.limpaBusca()
             })
-            document.addEventListener('click', e =>{
+            this.ulCidades.addEventListener('click', e =>{
                 if(e.target.tagName.toLowerCase() === 'li'){
                     const lat = e.target.getAttribute('data-lat');
                     const lon = e.target.getAttribute('data-lon');
                     this.buscaInfoCidade(lat, lon)
                     this.limpaBusca()
+                }else{
+                    this.ulCidades.classList.remove('ativo')
                 }
+            })
+            this.input.addEventListener('focusin', e=>{
+                if(this.ulCidades.hasChildNodes()){
+                    this.ulCidades.classList.add('ativo')
+                }
+            })
+            this.input.addEventListener('blur', e=>{
+                setTimeout(() => this.ulCidades.classList.remove('ativo'), 50)
             })
         }
 
@@ -36,10 +49,12 @@
 
         get localizacao(){
             if(navigator.geolocation){
-                navigator.geolocation.getCurrentPosition(local =>{
-                    const lat = local.coords.latitude
-                    const lon = local.coords.longitude
+                navigator.geolocation.getCurrentPosition(sucesso =>{
+                    const lat = sucesso.coords.latitude
+                    const lon = sucesso.coords.longitude
                     this.buscaInfoCidade(lat, lon)
+                }, erro =>{
+                        this.buscaInfoCidade(String(-15.5986686), String(-56.0991301))                    
                 })
             }
         }
@@ -71,6 +86,7 @@
                 const resposta = await fetch(query)
                 if(resposta.ok){
                     const json = await resposta.json()
+                    this.loader.classList.remove('d-none')
                     this.mostraInfo(json)
                     this.cidadeDb = {lat: lat, lon: lon}
                 }
@@ -84,8 +100,14 @@
             this.infoDiv.querySelector('.descricao').innerHTML = info.weather[0].description
             this.infoDiv.querySelector('.cidade span').innerHTML = info.name
             this.infoDiv.querySelector('.temperatura').innerHTML = Math.round(info.main.temp)
-            this.infoDiv.querySelector('img').src = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
-            this.infoDiv.classList.add('ativo')
+            const img = new Image()
+            img.src = `https://openweathermap.org/img/wn/${info.weather[0].icon}@2x.png`
+            this.icon.innerHTML = ''
+            this.icon.appendChild(img)
+            img.addEventListener('load', ()=>{
+                this.infoDiv.classList.add('ativo')
+                this.loader.classList.add('d-none')
+            })
         }
 
         set cidadeDb(cidade){

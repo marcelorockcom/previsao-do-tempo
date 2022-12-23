@@ -15,11 +15,12 @@ html{
 :root{
     --branco50p: #ffffff80;
     --azul50p: #5278ae86;
+    --gradient: linear-gradient(45deg, #56cbb4 0%,#5567ba 100%);
 }
 
 body{
     font-size: 1.6rem;
-    background: linear-gradient(45deg, #56cbb4 0%,#5567ba 100%);
+    background: var(--gradient);
     background-repeat: no-repeat;
     min-width: 100vw;
     min-height: 100vh;
@@ -38,7 +39,7 @@ body{
     justify-content: center;
 }
 
-input, button{
+input{
     font-size: 2rem;
     border-radius: 2rem;
     padding: .5rem 2rem;
@@ -80,19 +81,22 @@ nav{
 form{
     font-size: 2rem;
     border-radius: 2rem;
-    background-color: var(--azul50p);
+    background: var(--gradient);
     color: #fff;
     width: 100%;
     box-shadow: 0px 3px 20px -7px rgba(0,0,0,0.75);
     position: absolute;
+    z-index: 2;
 }
 
-nav button{
+nav .busca{
     width: initial;
+    display: inline;
     background-color: transparent;
     position: absolute;
     right: 0;
     padding: 1rem 2rem 1rem 1rem;
+    opacity: 0.5;
 }
 
 nav .lista-cidades{
@@ -107,7 +111,7 @@ nav .lista-cidades::-webkit-scrollbar {
 }
   
 nav .lista-cidades::-webkit-scrollbar-track {
-    background: transparent;        /* color of the tracking area */
+    background: transparent;
 }
 
 nav .lista-cidades::-webkit-scrollbar-thumb {
@@ -155,19 +159,22 @@ main .info{
 .info h1{
     display: flex;
     justify-content: center;
-    align-items: center;
     font-weight: 400;
+    text-align: start;
 }
 
 .info h1 i{
     font-size: 2.2rem;
     margin-right: 1rem;
+    position: relative;
+    top: 1rem;
 }
 
 .info .icon{
     display: flex;
+    justify-content: center;
     align-items: center;
-    height: 10rem;
+    height: 12rem;
     overflow: hidden;
     margin-top: 3rem;
 }
@@ -197,4 +204,71 @@ main .info{
 
 .ativo{
     display: block !important;
+}
+
+.d-none{
+    display: none !important;
+}
+
+.loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background: var(--gradient);
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.loading{
+    width: 20rem;
+    height: 20rem;
+    border-radius: 50%;
+    border-top: .5rem solid #fff;
+    animation: loader 1s infinite;
+    position: absolute;
+}
+
+.logo-Loading{
+    width: 20rem;
+    height: 20rem;
+}
+
+.logo-Loading img{
+    width: 100%;
+    height: auto;
+    padding: 1rem
+}
+
+@keyframes loader {
+    0%{
+        transform: rotate(0deg);
+    }
+    100%{
+        transform: rotate(360deg);
+    }
+}
+
+
+@media (max-width: 768px){
+
+    header{
+        min-height: 15vh;
+        align-items: end;
+    }
+
+    form{
+        position: absolute;
+        top: 0;
+    }
+
+    main{
+        display: flex;
+        align-items: center;
+        min-height: 70vh;
+        margin-top: 4rem;
+    }
+
 }

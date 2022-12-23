@@ -5,6 +5,16 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="assets/img/icon.png" type="image/x-icon">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://previsao-do-tempo-mb.netlify.app/">
+    <meta property="og:title" content="Previsão do tempo - by @marcelorock"/>
+    <meta property="og:description" content="Previsão do tempo - HTML, CSS & JS"/>
+    <meta property="og:image" content="https://previsao-do-tempo-mb.netlify.app/assets/img/mockup.jpg"/>
+    <meta property="og:image:width" content="1200"/>
+    <meta property="og:image:height" content="630"/>
+    <meta property="og:image" content="https://previsao-do-tempo-mb.netlify.app/assets/img/icon.png"/>
+    <meta property="og:image:width" content="400"/>
+    <meta property="og:image:height" content="400"/>
     <title>Previão do Tempo</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="assets/css/style.css">
@@ -16,10 +26,9 @@
             <nav>
                 <form action="#">
                     <label for="search">
-                        <input type="text" id="search" placeholder="Procure por uma cidade">
-                        <button type="submit"><i class="fa fa-search"></i></button>
-                        <ul class="lista-cidades">
-                        </ul>
+                        <input type="text" id="search" placeholder="Cidade ou bairro">
+                        <div class="busca"><i class="fa fa-search"></i></div>
+                        <ul class="lista-cidades"></ul>
                     </label>
                 </form>
             </nav>
@@ -29,9 +38,9 @@
         <div class="container">
             <div class="row">
                 <div class="info">
-                    <h1 class="cidade"><i class="fa fa-map-marker-alt"></i></i><span></span></h1>
+                    <h1 class="cidade"><i class="fa fa-map-marker-alt"></i><span></span></h1>
                     <div class="icon">
-                        <img src="#" alt="">
+                        
                     </div>
                     <p class="temp"><span class="temperatura"></span><span class="grau">º</span></p>
                     <p class="descricao"></p>
@@ -39,10 +48,17 @@
             </div>
         </div>
     </main>
+    <div class="loader">
+        <div class="loading">
+        </div>
+        <div class="logo-Loading">
+            <img src="assets/img/icon.png" alt="" class="logo">
+        </div>
+    </div>
     <footer>
         <div class="container">
             <div class="row">
-                <p>by <a href="#">@MarceloRock</a></p>
+                <p>by <a href="https://www.linkedin.com/in/marcelorock/">@MarceloRock</a></p>
             </div>
         </div>
     </footer>

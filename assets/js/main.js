@@ -39,7 +39,7 @@
                 }
             })
             this.input.addEventListener('blur', e=>{
-                setTimeout(() => this.ulCidades.classList.remove('ativo'), 100)
+                setTimeout(() => this.ulCidades.classList.remove('ativo'), 300)
             })
         }
 
